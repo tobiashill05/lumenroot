@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://b0i18gglhsl5f"]
+
+[ext_resource type="Script" path="res://scripts/coin.gd" id="1_nk7hu"]
+[ext_resource type="Texture2D" uid="uid://c234ly11y3hqf" path="res://assets/TexturesSprites/forestSprites_ v1.2/mFairy_.png" id="2_p27c0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85kqa"]
+atlas = ExtResource("2_p27c0")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00oio"]
+atlas = ExtResource("2_p27c0")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0qff"]
+atlas = ExtResource("2_p27c0")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1onjm"]
+atlas = ExtResource("2_p27c0")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5n202"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85kqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00oio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0qff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1onjm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ljykc"]
+radius = 4.0
+
+[sub_resource type="Gradient" id="Gradient_g2pnt"]
+offsets = PackedFloat32Array(0, 0.701299, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l6vfd"]
+gradient = SubResource("Gradient_g2pnt")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+metadata/_snap_enabled = true
+
+[node name="Coin" type="Area2D"]
+script = ExtResource("1_nk7hu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -3)
+scale = Vector2(0.583333, 0.541667)
+sprite_frames = SubResource("SpriteFrames_5n202")
+autoplay = "default"
+frame = 2
+frame_progress = 0.156236
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ljykc")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(12, -5)
+texture = SubResource("GradientTexture2D_l6vfd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

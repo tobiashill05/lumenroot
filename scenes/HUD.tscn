@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkvrg8qeew36n"]
+
+[ext_resource type="Script" path="res://scripts/CanvasLayer.gd" id="1_u8gf8"]
+[ext_resource type="FontFile" uid="uid://crvjq0fp4et51" path="res://assets/Four Seasons Platformer Tileset [16x16][FREE] - RottingPixels/Four Seasons Platformer Tileset [16x16][FREE] - RottingPixels/brackeys_platformer_assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="2_ia7m4"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_u8gf8")
+
+[node name="fairycount" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_ia7m4")
+text = "Fairies: 0"
